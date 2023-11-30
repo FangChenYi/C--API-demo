@@ -10,6 +10,6 @@ public class Walk
     public Guid DifficultyId { get; set; }
     public Guid RegionId { get; set; }
     
-    public Difficulty Difficulty { get; set; }
     public Region Region { get; set; }
+    public Difficulty Difficulty { get; set; }
 }

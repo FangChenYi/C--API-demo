@@ -101,13 +101,18 @@ namespace NZWalks.API.Controllers
             // return CreatedAtAction(nameof(GetById), new { id = regionDomainModel.Id }, regionDto);
 
             // 使用AutoMapper
-            var regionDomainModel = mapper.Map<Region>(addRegionRequestDto);
+            if (ModelState.IsValid) // 未使用ValidateModelAttribute
+            {
+                var regionDomainModel = mapper.Map<Region>(addRegionRequestDto);
 
-            regionDomainModel = await regionRepository.CreateAsync(regionDomainModel);
+                regionDomainModel = await regionRepository.CreateAsync(regionDomainModel);
 
-            var regionDto = mapper.Map<RegionDto>(regionDomainModel);
+                var regionDto = mapper.Map<RegionDto>(regionDomainModel);
 
-            return CreatedAtAction(nameof(GetById), new { id = regionDto.Id }, regionDto);
+                return CreatedAtAction(nameof(GetById), new { id = regionDto.Id }, regionDto);
+            }
+
+            return BadRequest(ModelState);
         }
 
         [HttpPut]
@@ -139,14 +144,20 @@ namespace NZWalks.API.Controllers
             // return Ok(regionDto);
 
             // 使用AutoMapper
-            var regionDomainModel = mapper.Map<Region>(updateRegionRequestDto);
-
-            if (regionDomainModel == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                var regionDomainModel = mapper.Map<Region>(updateRegionRequestDto);
+
+                if (regionDomainModel == null)
+                {
+                    return NotFound();
+                }
+
+                regionDomainModel = await regionRepository.UpdateAsync(id, regionDomainModel);
+                return Ok(mapper.Map<RegionDto>(regionDomainModel));
             }
-            regionDomainModel = await regionRepository.UpdateAsync(id, regionDomainModel);
-            return Ok(mapper.Map<RegionDto>(regionDomainModel));
+
+            return BadRequest(ModelState);
         }
 
         [HttpDelete]
