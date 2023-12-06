@@ -256,3 +256,12 @@
 /Users/x1/Desktop/C#/NZWalks/NZWalks.API/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/x1/Desktop/C#/NZWalks/NZWalks.API/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/x1/Desktop/C#/NZWalks/NZWalks.API/bin/Debug/net7.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/x1/Desktop/C#/NZWalks/NZWalks.API/bin/Debug/net7.0/Serilog.dll
+/Users/x1/Desktop/C#/NZWalks/NZWalks.API/bin/Debug/net7.0/Serilog.AspNetCore.dll
+/Users/x1/Desktop/C#/NZWalks/NZWalks.API/bin/Debug/net7.0/Serilog.Extensions.Hosting.dll
+/Users/x1/Desktop/C#/NZWalks/NZWalks.API/bin/Debug/net7.0/Serilog.Extensions.Logging.dll
+/Users/x1/Desktop/C#/NZWalks/NZWalks.API/bin/Debug/net7.0/Serilog.Formatting.Compact.dll
+/Users/x1/Desktop/C#/NZWalks/NZWalks.API/bin/Debug/net7.0/Serilog.Settings.Configuration.dll
+/Users/x1/Desktop/C#/NZWalks/NZWalks.API/bin/Debug/net7.0/Serilog.Sinks.Console.dll
+/Users/x1/Desktop/C#/NZWalks/NZWalks.API/bin/Debug/net7.0/Serilog.Sinks.Debug.dll
+/Users/x1/Desktop/C#/NZWalks/NZWalks.API/bin/Debug/net7.0/Serilog.Sinks.File.dll

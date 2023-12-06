@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text.Json;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using NZWalks.API.Data;
 using NZwalks.API.Models.Domain;
 using NZWalks.API.Models.DTO;
@@ -21,20 +16,24 @@ namespace NZWalks.API.Controllers
         private readonly NZWalksDbContext dbContext;
         private readonly IRegionRepository regionRepository;
         private readonly IMapper mapper;
+        private readonly ILogger<RegionsController> logger;
 
-        public RegionsController(NZWalksDbContext dbContext, IRegionRepository regionRepository, IMapper mapper)
+        public RegionsController(NZWalksDbContext dbContext,
+            IRegionRepository regionRepository,
+            IMapper mapper,
+            ILogger<RegionsController> logger)
         {
             this.dbContext = dbContext;
             this.regionRepository = regionRepository;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         [HttpGet]
-        [Authorize(Roles = "Reader")]
+        // [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetAll()
         {
-            var regionsDomain = await regionRepository.GetAllAsync();
-
+            // var regionsDomain = await regionRepository.GetAllAsync();
             // var regionsDto = new List<RegionDto>();
             //
             // foreach (var regionDomain in regionsDomain)
@@ -52,6 +51,7 @@ namespace NZWalks.API.Controllers
             // return Ok(regionsDto);
 
             // 使用AutoMapper
+            var regionsDomain = await regionRepository.GetAllAsync();
             return Ok(mapper.Map<List<RegionDto>>(regionsDomain));
         }
 
